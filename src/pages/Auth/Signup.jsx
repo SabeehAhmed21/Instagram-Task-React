@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function App() {
+function Signup() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordError, setpasswordError] = useState("");
@@ -15,13 +15,13 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="Signup">
       <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-md-4">
             <form id="loginform" onSubmit={loginSubmit}>
               <div className="form-group">
-                <label className="label">Email address</label>
+                <label className="label">Enter Email address</label>
                 <input
                   type="email"
                   className="form-control"
@@ -36,7 +36,20 @@ function App() {
                 </small>
               </div>
               <div className="form-group">
-                <label className="label">Password</label>
+                <label className="label">Enter Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                <small id="passworderror" className="text-danger form-text">
+                  {passwordError}
+                </small>
+              </div>
+              <div className="form-group">
+                <label className="label">Re-Enter Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -57,7 +70,7 @@ function App() {
                 <label className="form-check-label label">Check me out</label>
               </div>
               <button type="submit" className="btn btn-primary">
-                Submit
+                Create Account
               </button>
             </form>
           </div>
@@ -67,4 +80,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Signup;
