@@ -114,7 +114,7 @@ const Home = () => {
         <Modal.Footer>
           <br/>
           
-          <button onClick={addItem}></button>
+          <button onClick={addItem}>Add</button>
           <button  onClick={handleClose}>
             Close
           </button>
