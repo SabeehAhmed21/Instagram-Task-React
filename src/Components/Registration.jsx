@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert,Row,Col } from "react-bootstrap";
 import Login from "./Login";
+import image from "../assests/images/im.jpg"
 import Home from "../pages/Home/Home";
 
 function Registration() {
@@ -28,7 +29,12 @@ function Registration() {
    
     <>
      {login?(
-      <form onSubmit={handleSubmit}>
+      <Row className="w-100" style={{height:"100vh"}}>
+        <Col md={8}>
+<img src={image} alt="image" className="w-100 h-100"/>
+        </Col>
+        <Col md={4} className="mt-5">
+        <form onSubmit={handleSubmit}>
         <h1>Register</h1>
         <div className="form-group">
           <label htmlFor="">name</label>
@@ -75,6 +81,9 @@ function Registration() {
             
         )}
       </form>
+        </Col>
+      </Row>
+   
       ):(
       <Home/>
       )}
