@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import Login from "./Login";
+import Home from "../pages/Home/Home";
 
 function Registration() {
   const [name, setName] = useState("");
@@ -75,7 +76,7 @@ function Registration() {
         )}
       </form>
       ):(
-      <Login/>
+      <Home/>
       )}
     </>
   );

@@ -7,12 +7,13 @@ import Home from './pages/Home/Home';
  import Web from './Components/Web';
 import Navbar from "./Components/Nav"
 import { Routes, Route } from "react-router-dom"
+import Registration from './Components/Registration';
 
 function App() {
   return (
    <>
     <Routes>
-        <Route path="/" element={ <Home/> } />
+        <Route path="/" element={ <Registration/> } />
         <Route path="/webcam" element={ <Web/> } />
        
       </Routes>
