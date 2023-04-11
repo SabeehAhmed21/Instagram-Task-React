@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 import Image from './Image';
-import { Link } from "react-router-dom";
+
 import Web from "./Web"
-import { BsPencil } from 'react-icons/bs';
+
 import Modal from 'react-bootstrap/Modal';
-import { RiDeleteBin2Line } from 'react-icons/ri';
+
 
 
 export default function EditButton(props) {
@@ -84,11 +84,12 @@ export default function EditButton(props) {
                 </div>
                 
                 <MDBRow className="g-2">
-                  <MDBCol className="mb-2 d-flex align-items-center justify-content-between">
-                    <Image/>
-                    <MDBCardText className="mb-0">  <button className="fst-italic w-100 bg-white text-danger"  onClick={handleShow} >
+                <MDBCardText className="mb-0">  <button className=" text-end fst-italic w-100 bg-white text-danger"  onClick={handleShow} >
         Take Photo
       </button></MDBCardText>
+                  <MDBCol className="mb-2 d-flex align-items-center justify-content-between">
+                    <Image/>
+                   
                   </MDBCol>
                   
                 </MDBRow>

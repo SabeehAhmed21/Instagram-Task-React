@@ -1,92 +1,136 @@
-import React, { useState } from "react";
-import { Alert,Row,Col } from "react-bootstrap";
-import Login from "./Login";
+import { Row, Col } from "react-bootstrap";
 import image from "../assests/images/im.jpg"
-import Home from "../pages/Home/Home";
+import React, { useState } from "react";
+import { Form, Alert } from "react-bootstrap";
+import Login from "./Login";
 
 function Registration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [flag, setFlag] = useState("false");
-  const [login, setLogin] = useState("true");
+  const [profession, setProfession] = useState("");
 
-  function handleSubmit(e) {
+  const [flag, setFlag] = useState(false);
+  const [login, setLogin] = useState(true);
+
+
+
+  function handleFormSubmit(e) {
     e.preventDefault();
-    if (!name || !email|| !password|| ! phone){
-        setFlag(true);
 
-    }else{setFlag(false);
-        localStorage.setItem('email',JSON.stringify(email));
-        localStorage.setItem('password',JSON.stringify(password));
-        console.log('saved in local storage');
-        setLogin(!login);
+    if (!name || !email || !password || !phone || !profession) {
+      setFlag(true);
+    } else {
+      setFlag(false);
+      localStorage.setItem("Email", JSON.stringify(email));
+      localStorage.setItem(
+        "Password",
+        JSON.stringify(password)
+      );
+      console.log("Saved in Local Storage");
+
+      setLogin(!login);
     }
   }
 
+  function handleClick() {
+    setLogin(!login);
+  }
+
+
+
+
   return (
-   
     <>
-     {login?(
-      <Row className="w-100" style={{height:"100vh"}}>
-        <Col md={8}>
-<img src={image} alt="image" className="w-100 h-100"/>
-        </Col>
-        <Col md={4} className="mt-5">
-        <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <div className="form-group">
-          <label htmlFor="">name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="enter your full name"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">Email</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="enter your Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="enter your password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">phone no</label>
-          <input
-            type="phone"
-            className="form-control"
-            placeholder="enter your phone no"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-dark btn-lg btn-block">
-          Submit
-        </button>
-        <p> Already Register {""}? login</p>
-        {flag &&(
-            <Alert color='primary' variant="danger"> please fill out all the fields</Alert>
-            
+
+      <div>
+        {" "}
+        {login ? (
+          <Row className="w-100" style={{ height: "100vh" }}>
+            <Col md={8}>
+              <img src={image} alt="image1" className="w-100 h-100" />
+            </Col>
+            <Col md={4} className="mt-5">
+              <form onSubmit={handleFormSubmit}>
+                <h3>Register</h3>
+
+                <div className="form-group">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Full Name"
+                    name="name"
+                    onChange={(event) => setName(event.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter email"
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter password"
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Phone No.</label>
+                  <input
+                    type="Phone"
+                    className="form-control"
+                    placeholder="Enter contact no"
+                    onChange={(event) => setPhone(event.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Choose your Profession</label>
+                  <Form.Control
+                    as="select"
+                    onChange={(event) => setProfession(event.target.value)}
+                  >
+                    <option>Select</option>
+                    <option>Artist</option>
+                    <option>Photographer</option>
+                    <option>Team Player</option>
+                    <option>Full Stack</option>
+                  </Form.Control>
+                </div>
+
+                <button type="submit" className="btn btn-dark btn-lg btn-block">
+                  Register
+                </button>
+                <p onClick={handleClick} className="forgot-password text-right">
+                  Already registered{" "}log in?
+
+                </p>
+                {flag && (
+                  <Alert color="primary" variant="danger">
+                    I got it you are in hurry! But every Field is important!
+                  </Alert>
+                )}
+              </form>
+            </Col>
+          </Row>
+
+        ) : (
+          <Login />
         )}
-      </form>
-        </Col>
-      </Row>
-   
-      ):(
-      <Home/>
-      )}
+      </div>
+
     </>
   );
 }
